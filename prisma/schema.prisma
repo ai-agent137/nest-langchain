@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+  // 与当前 Nest 应用的 CommonJS 模块格式保持一致
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+model User {
+  // 字段名   数据类型   修饰符
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  name      String
+}
